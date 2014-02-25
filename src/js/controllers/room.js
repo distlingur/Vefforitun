@@ -21,7 +21,7 @@ app.controller("RoomController", ["$scope","$location", "$routeParams", "SocketS
 			}
 		});
 
-		socket.on("roomlist", function(rooms) {
+		socket.emit("roomlist", function(rooms) {
 						$scope.rooms = rooms;
 			
 		});
@@ -47,6 +47,16 @@ app.controller("RoomController", ["$scope","$location", "$routeParams", "SocketS
 	
 
 	};
+	$scope.leaveChannel = function(){
+		if(socket) {
+		socket.emit('partroom', function (room) {
+		delete roomName;
+		//elete users;
+		
+     
+	});
+	}
+};
 	$scope.send = function() {
 		if(socket) {
 			console.log("I sent a message to " + $scope.roomName + ": " + $scope.currentMessage);

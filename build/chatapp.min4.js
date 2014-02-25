@@ -74,7 +74,7 @@ app.config(["$routeProvider", function($routeProvider) {
 			}
 		});
 
-		socket.on("roomlist", function(rooms) {
+		socket.emit("roomlist", function(rooms) {
 						$scope.rooms = rooms;
 			
 		});
@@ -100,6 +100,15 @@ app.config(["$routeProvider", function($routeProvider) {
 	
 
 	};
+	$scope.leaveChannel = function(){
+		if(socket) {
+		socket.emit('partroom', function (room) {
+
+		
+     
+	});
+	}
+};
 	$scope.send = function() {
 		if(socket) {
 			console.log("I sent a message to " + $scope.roomName + ": " + $scope.currentMessage);

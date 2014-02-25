@@ -54,7 +54,8 @@ app.config(["$routeProvider", function($routeProvider) {
 }]);;app.controller("RoomController", ["$scope","$location", "$routeParams", "SocketService", function($scope,$location, $routeParams, SocketService) {
 	$scope.roomName = $routeParams.roomName;
 	$scope.currentMessage = "";
-	$scope.create = "";
+	$scope.rooms = [];
+$scope.username = "";
 	var socket = SocketService.getSocket();
 	var roomId = $routeParams.id;
 	//var socket2 = io.connect('http://localhost:8080');
@@ -74,12 +75,13 @@ app.config(["$routeProvider", function($routeProvider) {
 		socket.on("updateusers", function(room, users) {
 			if(room === $scope.roomName) {
 				$scope.users = users;
+				$scope.$apply();
 			}
 		});
 
-		socket.emit("roomlist", function(rooms) {
-				$scope.rooms = room;
-				rooms = [];
+		socket.on("roomlist", function(rooms,users) {
+				$scope.rooms = rooms;
+				$scope.users = users;
 
 			
 		});
@@ -96,7 +98,9 @@ app.config(["$routeProvider", function($routeProvider) {
 	socket.emit("joinroom", { room: $scope.roomName, pass: "" }, function(success) {
 		 
 		if(success) {
+		room = undefined;	
 		$location.path("/room/"+$scope.roomName);
+		$scope.$apply();
 		}
 
 
@@ -108,7 +112,8 @@ app.config(["$routeProvider", function($routeProvider) {
 	};
 	$scope.leaveChannel = function(){
 		//if(socket) {
-		socket.emit('partroom', { roomName: "", users: "" });
+//		socket.emit('partroom', { roomName: "", users: "" });
+	$location.path("/rooms/lobby");
 	//}
 };
 	$scope.Dis = function(){
@@ -119,7 +124,10 @@ app.config(["$routeProvider", function($routeProvider) {
 
 	};
 	$scope.Kick = function(){
-
+		//todo
+	};
+	$scope.Ban = function(){
+		//todo
 	};
 	$scope.send = function() {
 		if(socket) {

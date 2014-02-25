@@ -1,20 +1,19 @@
 
 <div class="container">  
   <h1>Welcome to lallaland</h1> 
-  <h2> Room List </h2> 
+  <h2> STUFF </h2> 
 
-    <div>
-        
-        <ul ng-repeat="channel in channels">
-            <li><a href="createChannel()">{{roomName}}</a></li>
-            <li><button ng-click="joinChannel(Channel)">{roomName}}</button></li>
-        </ul>
-    </div>
 <div class="col-md-3 col-xs-3">
-                <p>Rooms</p>
-                <ul ng-repeat="room in roomList"  ng-model="rooms">
-    <li><a href="#/rooms/{{ roomName }}"> Herbergi {{ rooms}} </a></li>
+                <p>Rooms Active</p>
+                <ul ng-repeat="user in users" >
+    <li><a href="#/room/{{ roomName }}"> {{roomName}} {{ room }}{{ rooms }} </a></li>
 </ul>
+<ul>
+    <p>Users Online </p>
+                    <li ng-repeat="user in users">
+                        {{ user }}
+                    </li>
+                </ul>
             </div>
 
     <input ng-model="roomName" placeholder="Insert name here">

@@ -26,7 +26,7 @@ $scope.username = "";
 			}
 		});
 
-		socket.on("roomlist", function(rooms,users) {
+		socket.on("roomlist", function(rooms) {
 				$scope.rooms = rooms;
 				$scope.users = users;
 
@@ -46,6 +46,8 @@ $scope.username = "";
 	socket.emit("joinroom", { room: $scope.roomName, pass: "" }, function(success) {
 		 
 		if(success) {
+
+		$scope.username = username;
 		//SocketService.setConnected(socket);
 		//SocketService.setUsername($scope.username);
 		$location.path("/room/"+$scope.roomName);

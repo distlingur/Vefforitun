@@ -25,7 +25,7 @@ module.exports = function(grunt) {
           "src/js/directives/*.js",
           "src/js/controllers/*.js",],
     // the location of the resulting JS file
-    dest: 'build/chatapp.min4.js'
+    dest: 'build/Controllerinn.js'
   }
 },
 uglify: {
@@ -35,7 +35,7 @@ uglify: {
   },
   dist: {
     files: {
-      'build/chatapp2.min.js': ["src/js/*.js",
+      'build/chatapp.min.js': ["src/js/*.js",
           "src/js/services/*.js",
           "src/js/directives/*.js",
           "src/js/controllers/*.js"]

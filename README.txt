@@ -1,6 +1,6 @@
-# Socket.IO Chat
+# Chat Application
 
-A simple chat App using AngularJs and sockets
+A simple chat app using AngularJs and sockets
 ## How to use
 
 ```
@@ -20,6 +20,7 @@ you should run python -m SimpleHTTPServer 8090  to point your browser to http://
 
 - Multiple users can join a chat room by entering a unique username
 on website load.
+- User can create a chat (however that feature isnt working correctly)
 - Users can type chat messages to the chat room
-- A notification is sent to all users when a user joins or leaves
-the chatroom
+- User can disconnect from chat or server 
+- User can leave room

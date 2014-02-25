@@ -54,7 +54,7 @@ app.config(["$routeProvider", function($routeProvider) {
 }]);;app.controller("RoomController", ["$scope","$location", "$routeParams", "SocketService", function($scope,$location, $routeParams, SocketService) {
 	$scope.roomName = $routeParams.roomName;
 	$scope.currentMessage = "";
-
+	$scope.create = "";
 	var socket = SocketService.getSocket();
 	//var socket2 = io.connect('http://localhost:8080');
 
@@ -80,13 +80,24 @@ app.config(["$routeProvider", function($routeProvider) {
 		});
 		/*socket.on('rooms', function() {
 		socket.emit('roomlist', rooms);*/
-	
+		
+
 
 	}
 	
 	$scope.createChannel = function(){
+	if(socket) {
+	socket.emit("joinroom", { room: $scope.roomName, pass: "" }, function(success) {
+		 
+		if(success) {
+		$location.path("/room/"+$scope.roomName);
+		}
+
+
+	});
+	//$location.path("/room/"+$scope.roomname);
+		}
 	
-	$location.path("/room/create");
 
 	};
 	$scope.send = function() {

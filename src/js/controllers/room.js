@@ -3,8 +3,11 @@ app.controller("RoomController", ["$scope","$location", "$routeParams", "SocketS
 	$scope.currentMessage = "";
 	$scope.create = "";
 	var socket = SocketService.getSocket();
+	var roomId = $routeParams.id;
 	//var socket2 = io.connect('http://localhost:8080');
-
+	/*$scope.Idd = roomId;
+	$scope.Names = "roomId";
+	$scope.Room = {};*/
 	if(socket) {
 		socket.emit("joinroom", { room: $scope.roomName, pass: "" }, function(success, errorMessage) {
 
@@ -22,9 +25,12 @@ app.controller("RoomController", ["$scope","$location", "$routeParams", "SocketS
 		});
 
 		socket.emit("roomlist", function(rooms) {
-						$scope.rooms = rooms;
+				$scope.rooms = room;
+				rooms = [];
+
 			
 		});
+
 		/*socket.on('rooms', function() {
 		socket.emit('roomlist', rooms);*/
 		
@@ -48,15 +54,20 @@ app.controller("RoomController", ["$scope","$location", "$routeParams", "SocketS
 
 	};
 	$scope.leaveChannel = function(){
-		if(socket) {
-		socket.emit('partroom', function (room) {
-		delete roomName;
-		//elete users;
-		
-     
-	});
-	}
+		//if(socket) {
+		socket.emit('partroom', { roomName: "", users: "" });
+	//}
 };
+	$scope.Dis = function(){
+		socket.emit('disconnect', function(){
+
+		});
+		$location.path("/#/");
+
+	};
+	$scope.Kick = function(){
+
+	};
 	$scope.send = function() {
 		if(socket) {
 			console.log("I sent a message to " + $scope.roomName + ": " + $scope.currentMessage);

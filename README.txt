@@ -1,7 +1,25 @@
-From what we did in the class I removed node_modules, so you will have to re-install them from the package.json.
+# Socket.IO Chat
 
-I also removed the task in grunt to concatenate and minify the javascript files - so you will have to figure that one out too in order to update the file that is being referenced in index.html
+A simple chat App using AngularJs and sockets
+## How to use
 
-The bower components have also been removed, they can be added again very easily if you have bower set up (like you should!)
+```
+$ npm install
+$npm install node
+$ node chatserver.js
+$
+To add features to the program you have to use grunt to minify and concate the javascript code,
+to install Grunt do this:
+$ npm install Grunt
+$
+``
 
-Good luck :)
+you should run python -m SimpleHTTPServer 8090  to point your browser to http://localhost:8090`.
+
+## Features
+
+- Multiple users can join a chat room by entering a unique username
+on website load.
+- Users can type chat messages to the chat room
+- A notification is sent to all users when a user joins or leaves
+the chatroom

@@ -70,7 +70,7 @@ function Manager (server, options) {
     , resource: '/socket.io'
     , transports: defaultTransports
     , authorization: false
-    , blacklist: ['disconnect']
+    , blacklist: []
     , 'log level': 3
     , 'log colors': tty.isatty(process.stdout.fd)
     , 'close timeout': 60

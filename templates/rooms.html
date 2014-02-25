@@ -12,16 +12,14 @@
     </div>
 <div class="col-md-3 col-xs-3">
                 <p>Rooms</p>
-                <ul>
-                    <li ng-repeat="Room in Rooms">
-                        {{ rooms }}
-                    </li>
-                </ul>
+                <ul ng-repeat="room in roomList"  ng-model="rooms">
+    <li><a href="#/rooms/{{ roomName }}"> Herbergi {{ rooms}} </a></li>
+</ul>
             </div>
 
     <input ng-model="roomName" placeholder="Insert name here">
     <button ng-click="createChannel()">Create!</button>
-
+    <button ng-click="Dis()">disconnect!</button>
 
 </div>
 

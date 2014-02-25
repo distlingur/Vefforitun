@@ -38,8 +38,8 @@ app.config(["$routeProvider", function($routeProvider) {
 		if(socket) {
 			socket.emit("adduser", $scope.username, function(available) {
 				if(available) {
-					//SocketService.setConnected(socket);
-					//SocketService.setUsername($scope.username);
+					SocketService.setConnected(socket);
+					SocketService.setUsername($scope.username);
 					$location.path("/rooms/lobby");
 				}
 				else {
@@ -95,12 +95,12 @@ $scope.username = "";
 	
 	$scope.createChannel = function(){
 	if(socket) {
-	socket.emit("adduser", $scope.username, function(available) { });
+
 	socket.emit("joinroom", { room: $scope.roomName, pass: "" }, function(success) {
 		 
 		if(success) {
-		SocketService.setConnected(socket);
-		SocketService.setUsername($scope.username);
+		//SocketService.setConnected(socket);
+		//SocketService.setUsername($scope.username);
 		$location.path("/room/"+$scope.roomName);
 		$scope.$apply();
 		}

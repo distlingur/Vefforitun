@@ -8,8 +8,8 @@ app.controller("LoginController", ["$scope", "$location", "SocketService", funct
 		if(socket) {
 			socket.emit("adduser", $scope.username, function(available) {
 				if(available) {
-					//SocketService.setConnected(socket);
-					//SocketService.setUsername($scope.username);
+					SocketService.setConnected(socket);
+					SocketService.setUsername($scope.username);
 					$location.path("/rooms/lobby");
 				}
 				else {

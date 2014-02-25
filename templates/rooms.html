@@ -5,8 +5,8 @@
 
 <div class="col-md-3 col-xs-3">
                 <p>Rooms Active</p>
-                <ul ng-repeat="user in users" >
-    <li><a href="#/room/{{ roomName }}"> {{roomName}} {{ room }}{{ rooms }} </a></li>
+                <ul ng-repeat="(roomName, user) in users" >
+    <li><a href="#/rooms/{{ roomName }}">{{ roomName }}  {{ rooms }}{{ room }} </a></li>
 </ul>
 <ul>
     <p>Users Online </p>
